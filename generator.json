@@ -1,0 +1,10 @@
+{
+	"baseName": "bookshop",
+	"databaseType": "mysql",
+	"hostName": "www.localhost.com",
+	"databaseName": "bookshop",
+	"userName": "root",
+	"password": "password",
+	"entities": [],
+	"composer": true
+}
