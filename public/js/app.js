@@ -1,6 +1,15 @@
 // Declare app level module which depends on filters, and services
 angular.module('bookshop', ['ngResource', 'ngRoute', 'ui.bootstrap', 'ui.date'])
-  .config(['$routeProvider','$locationProvider', function ($routeProvider,$locationProvider) {
+  .config(['$routeProvider','$locationProvider','$httpProvider', function ($routeProvider,$locationProvider,$httpProvider) {
+
+
+
+        $httpProvider.defaults.headers.common = {};
+        $httpProvider.defaults.headers.post = {};
+        $httpProvider.defaults.headers.put = {};
+        $httpProvider.defaults.headers.patch = {};
+
+
       $locationProvider.html5Mode({enabled: true});
     $routeProvider
       .when('/', {

@@ -2,10 +2,16 @@
 // auth routes
 
 $app->post('/api/login',function()use ($app){
+
     $app->response()->header("Content-Type", "application/json");
 
-    $identifier =  $app->request->params('username');
-    $password =  $app->request->params('password');
+    $er = json_decode($app->request->getBody(),true);
+    $identifier = $er['username'];
+    $password = $er['password'];
+////    $email = '';
+
+//    $identifier =  $app->request->params('username');
+//    $password =  $app->request->params('password');
 //    $email =  $app->request->params('email');
 
     $v =$app->validation;
@@ -23,16 +29,20 @@ $app->post('/api/login',function()use ($app){
             ->orWhere('email',$identifier)
             ->first();
 
+
         if($user && $app->hash->passwordCheck($password, $user->password)){
 
             $_SESSION['user_id'] = $user->id;
-            echo '{"Success": Logged In }';
+
+            echo json_encode($user);
         }else{
-            echo '{"Error": cannot log you in }';
+            echo '{"Error": "cannot log you in" }';
         }
 
-    }
+    }else{
 
+        echo'failed';
+    }
 
     $app->stop();
 });

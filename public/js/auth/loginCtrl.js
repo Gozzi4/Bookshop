@@ -2,32 +2,35 @@
  * Created by puter on 16/11/2015.
  */
 angular.module('bookshop')
-    .controller('loginController', ['$scope', function ($scope) {
+    .controller('loginController', ['$scope','$http', function ($scope,$http) {
 
 
+        $scope.login = login;
         $scope.username='';
-        $scope.email='';
+        $scope.Email='';
         $scope.password='';
+        var arr={};
+
+        var base ='http://www.localhost.com/Angular-PhpSlim/public/api/login'
+
+        function login(username,password,Email){
+            arr={
+                username:username,
+                password:password,
+                email:Email
+            }
+
+            $http.post(base, arr).then(function successCallback(response){
+
+                console.log(response.data.username)
+                $scope.Username = response.data.username;
+
+            }, function errorCallback(response){
 
 
+                console.log(response.username)
+            });
 
-
-        function login(){
-
-            $http.post().then(function(response){
-                if(response.data==='' || response.data===' '){
-                    //returning the data back so it can be used in the view
-                    $scope.result ={CelValue:"Blank value"};
-                }else{
-                    $scope.result =response.data;
-
-                }
-                //setting the output value to the text input so the user can convert back
-                $scope.temp=response.data.CelValue;
-            }) .catch(function () {
-
-                $scope.result ={CelValue:"Bad input"};
-            });;
         }
 
 
