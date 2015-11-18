@@ -10,3 +10,4 @@ $app->get('/', function() use ($app) {
     readfile('index.html');
     $app->stop();
 });
+

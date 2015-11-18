@@ -13,19 +13,14 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 
 class User extends Eloquent
 {
-
-
+    public $timestamps = false;
 
     protected  $table ='users';
 
-    protected  $schema =[
+    protected  $fillable = [
         'username',
         'password',
-        'email',
-        'rememeber_identifier',
-        'rememeber_token',
-
-
+        'email'
 
     ];
 

@@ -1,13 +1,32 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: puter
- * Date: 16/11/2015
- * Time: 11:16
- */
+// auth routes
 
-$app->get('/register',function()use ($app){
+$app->get('/api/login',function()use ($app){
+    $app->response()->header("Content-Type", "application/json");
+
+    $username =  $app->request->params('username');
+    $password =  $app->request->params('password');
+//    $email =  $app->request->params('email');
 
 
 
+    $app->stop();
+});
+
+$app->post('/api/register',function()use ($app){
+    $app->response()->header("Content-Type", "application/json");
+
+    $username =  $app->request->params('username');
+    $password =  $app->request->params('password');
+    $email =  $app->request->params('email');
+
+
+    $app->user->create([
+        'username' => $username,
+        'password' => $app->hash->password($password),
+        'email' => $email
+
+    ]);
+    echo '{"Success": ' . json_encode($username) . '}';
+    $app->stop();
 });

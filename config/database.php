@@ -15,7 +15,7 @@ $capsule->addConnection([
     'host'      => 'www.localhost.com',
     'database'  => 'bookshop',
     'username'  => 'root',
-    'password'  => 'password',
+    'password'  => '',
     'charset'   => 'utf8',
     'collation' => 'utf8_unicode_ci',
     'prefix'    => '',

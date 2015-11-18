@@ -3,4 +3,10 @@
  */
 angular.module('bookshop')
     .controller('loginController', ['$scope', function ($scope) {
+
+
+
+
+
+
     }]);

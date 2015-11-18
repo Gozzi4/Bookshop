@@ -6,5 +6,5 @@
  * Time: 22:17
  */
 
-require 'home.php';
-require 'auth.php';
+require '../routes/auth.php';
+require '../routes/home.php';
