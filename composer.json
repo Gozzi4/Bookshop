@@ -9,7 +9,9 @@
         "illuminate/events": "*",
         "illuminate/filesystem": "*",
         "davedevelopment/phpmig": "1.1.*@dev",
-        "pimple/pimple": "1.*"
+        "pimple/pimple": "1.*",
+        "alexgarrett/violin": "~2.2",
+        "ircmaxell/random-lib": "~1.1"
     },
     "autoload": {
         "classmap": [
