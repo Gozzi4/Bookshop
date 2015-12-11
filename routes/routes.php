@@ -8,3 +8,5 @@
 
 require '../routes/auth.php';
 require '../routes/home.php';
+require '../routes/book.php';
+require '../routes/order.php';

@@ -1,10 +1,11 @@
 'use strict';
+var modRewrite = require('connect-modrewrite');
 
 var proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest;
 
 module.exports = function (grunt) {
   require('load-grunt-tasks')(grunt);
-  require('time-grunt')(grunt); 
+  require('time-grunt')(grunt);
 
   grunt.initConfig({
     yeoman: {
@@ -27,10 +28,10 @@ module.exports = function (grunt) {
       },
       src: {
         files: [
-          '<%= yeoman.app %>/*.html',
-          '<%= yeoman.app %>/css/**/*',
-          '<%= yeoman.app %>/js/**/*',
-          '<%= yeoman.app %>/views/**/*'
+          '/*.html',
+          '/css/**/*',
+          '/js/**/*',
+          '/views/**/*'
         ],
         //tasks: ['sync:dist']
       }
@@ -38,10 +39,11 @@ module.exports = function (grunt) {
     connect: {
       proxies: [
         {
-          context: '/bookshop',
-          host: 'localhost',
-          port: 8080,
-          https: false,
+          context: 'Angular-PhpSlim/public/books',
+          host: 'locahost.com/',
+          port: 9000,
+          "strict-ssl": false,
+          https: true,
           changeOrigin: false
         }
       ],
@@ -55,10 +57,12 @@ module.exports = function (grunt) {
         options: {
           open: true,
           base: [
-            '<%= yeoman.app %>'
+
+              'Angular-phpSlim'
           ],
           middleware: function (connect) {
             return [
+              modRewrite(['^[^\\.]*$ /index.html [L]']),
               proxySnippet,
               connect.static(require('path').resolve('public'))
             ];

@@ -1,18 +1,19 @@
 <?php
-// auth routes
 
-$app->post('/api/login',function()use ($app){
+
+$app->post('/login',function()use ($app){
 
     $app->response()->header("Content-Type", "application/json");
 
     $er = json_decode($app->request->getBody(),true);
     $identifier = $er['username'];
     $password = $er['password'];
-////    $email = '';
+
+    //uncomment this below for testing on postman
 
 //    $identifier =  $app->request->params('username');
 //    $password =  $app->request->params('password');
-//    $email =  $app->request->params('email');
+
 
     $v =$app->validation;
 
@@ -32,8 +33,7 @@ $app->post('/api/login',function()use ($app){
 
         if($user && $app->hash->passwordCheck($password, $user->password)){
 
-            $_SESSION['user_id'] = $user->id;
-
+            // success login
             echo json_encode($user);
         }else{
             echo '{"Error": "cannot log you in" }';
@@ -44,15 +44,25 @@ $app->post('/api/login',function()use ($app){
         echo'failed';
     }
 
-    $app->stop();
-});
+    echo $app->container->auth ;
 
-$app->post('/api/register',function()use ($app){
+});
+$app->get('/log',function()use ($app) {
+   echo  'fds';
+});
+$app->post('/register',function()use ($app){
     $app->response()->header("Content-Type", "application/json");
 
-    $username =  $app->request->params('username');
-    $password =  $app->request->params('password');
-    $email =  $app->request->params('email');
+    $er = json_decode($app->request->getBody(),true);
+    $username = $er['username'];
+    $email = $er['email'];
+    $password = $er['password'];
+
+    // uncomment this  for testing on postman
+
+//    $username =  $app->request->params('username');
+//    $password =  $app->request->params('password');
+//    $email =  $app->request->params('email');
 
     $v =$app->validation;
 
@@ -63,17 +73,22 @@ $app->post('/api/register',function()use ($app){
 
     ]);
 
-
-
     if($v->passes()){
         $app->user->create([
             'username' => $username,
             'password' => $app->hash->password($password),
             'email' => $email
         ]);
-        echo '{"Success": ' . json_encode($username) . '}';
+
+
+        $user = $app->user
+            ->where('username',$username)
+            ->orWhere('email',$email)
+            ->first();
+
+
+      echo  json_encode($user);
     }
 
 
-    $app->stop();
 });

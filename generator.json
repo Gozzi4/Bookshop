@@ -1,7 +1,7 @@
 {
 	"baseName": "bookshop",
 	"databaseType": "mysql",
-	"hostName": "www.localhost.com",
+	"hostName": "localhost",
 	"databaseName": "bookshop",
 	"userName": "root",
 	"password": "password",
