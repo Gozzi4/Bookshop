@@ -45,7 +45,6 @@ angular.module('bookshop').controller('profileController',['$scope','$routeParam
         }, function () {
 
 
-
         });
     }
 
@@ -57,6 +56,20 @@ angular.module('bookshop').controller('profileController',['$scope','$routeParam
         $http.get(url).then(function(response){
             //setting the output value to the text input so the user can convert back
             $scope.userbooks = response.data;
+            console.log(response.data);
+        }) .catch(function () {
+
+        });
+    }
+    function usersOrderss(){
+
+        
+        var url = "/orders";
+
+        $http.get(url).then(function(response){
+            //setting the output value to the text input so the user can convert back
+           
+           $scope.orders = response.data;
             console.log(response.data);
         }) .catch(function () {
 

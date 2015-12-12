@@ -24,17 +24,18 @@
             </div>
             <div ng-if="searchbook" class="row">
                 <div class="col-sm-6 col-md-4" ng-repeat="Boo in searchbook  | limitTo:10">
-
+                    <a href="/{{Boo.id}}">
                     <div class="thumbnail" >
-                        <a href="/{{Boo.id}}">
+                        
                         <img ng-src="{{ Boo.image }}" class="img-responsive" alt="...">
-                        </a>
+                        
                         <div class="caption">
                             <h3> {{ Boo.name }}</h3>
                             <p>Author: {{ Boo.author }} </p>
                             <p><a href="#" class="btn btn-primary" role="button">Order</a> </p>
                         </div>
                     </div>
+                    </a>
                     <br>
                 </div>
 
@@ -43,16 +44,18 @@
             <h1>Top Sellers!</h1>
             <div  class="row">
                 <div class="col-sm-6 col-md-4" ng-repeat="Bo in book | limitTo:10">
-                     <div class="thumbnail" >
                          <a href="/{{Bo.id}}">
+                     <div class="thumbnail" >
+                         
                          <img ng-src= "{{ Bo.image }}" alt="...">
-                    </a>
+                    
                         <div class="caption">
                             <h3> {{ Bo.name }}</h3>
                             <p>Author: {{ Bo.author }} </p>
                             <p><a href="#" class="btn btn-primary" role="button">Order</a> </p>
                         </div>
                     </div>
+                    </a>
                     <br>
 
                 </div>
