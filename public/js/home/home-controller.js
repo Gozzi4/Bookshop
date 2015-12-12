@@ -5,7 +5,7 @@ angular.module('bookshop')
       books();
      $scope.search = search;
       function books(){
-        $http.get('http://www.localhost.com/Angular-PhpSlim/public/books').then(function(response){
+        $http.get('/books').then(function(response){
           //setting the output value to the text input so the user can convert back
             $scope.book = response.data;
           console.log(response.data);
@@ -17,7 +17,7 @@ angular.module('bookshop')
 
         function search(Query){
 
-            var url = "http://www.localhost.com/Angular-PhpSlim/public/search/"+Query;
+            var url = "/search/"+Query;
 
             $http.get(url).then(function(response){
                 //setting the output value to the text input so the user can convert back

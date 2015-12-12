@@ -2,9 +2,11 @@
  * Created by puter on 20/11/2015.
  */
 
-angular.module('bookshop').controller('appController',['$scope','AuthService','$routeParams', function ($scope,
+angular.module('bookshop').controller('appController',['$scope','AuthService','$routeParams','$http', function ($scope,
 
-                                                                                                        AuthService,$routeParams) {
+                                                                                                        AuthService,$routeParams,$http) {
+   // function to keep user logged in
+   keepuser();
     //url id
     $scope.bookId = $routeParams.bookId;
 
@@ -15,6 +17,28 @@ angular.module('bookshop').controller('appController',['$scope','AuthService','$
     $scope.setCurrentUser = function (user) {
         $scope.currentUser = user;
     };
+    
+    function keepuser(){
+
+            var url = "/log";
+
+            $http.get(url).then(function(response){
+                // when user refreshes page data shows
+                if (response.data == 'null'){
+                    
+                   
+                }else{
+                    $scope.setCurrentUser(response.data);
+                    
+                    
+                    
+                }
+                
+                
+            }) .catch(function () {
+
+            });
+        }
 
 
 

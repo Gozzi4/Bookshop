@@ -5,7 +5,7 @@ angular.module('bookshop').factory('AuthService', function ($http, Session) {
     var authService = {};
     authService.login = function (credentials) {
         return $http
-            .post('http://www.localhost.com/Angular-PhpSlim/public/login', credentials)
+            .post('/login', credentials)
             .then(function (res) {
                 Session.create(res.data.id, res.data.username
                  );
@@ -14,7 +14,7 @@ angular.module('bookshop').factory('AuthService', function ($http, Session) {
     };
     authService.register = function (credentials) {
         return $http
-            .post('http://www.localhost.com/Angular-PhpSlim/public/register', credentials)
+            .post('/register', credentials)
             .then(function (res) {
                 Session.create(res.data.id, res.data.username
                 );

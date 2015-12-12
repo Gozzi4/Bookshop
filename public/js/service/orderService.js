@@ -7,21 +7,21 @@ angular.module('bookshop').factory('OrderService', function ($http) {
     var orderService = {};
     orderService.getOrders = function (id) {
         return $http
-            .get('http://www.localhost.com/Angular-PhpSlim/public/book/'+id)
+            .get('/get orders')
             .then(function (res) {
                 return res.data;
             });
     };
     orderService.addorder = function (id) {
         return $http
-            .post('http://www.localhost.com/Angular-PhpSlim/public/addorder',id)
+            .post('/addorder',id)
             .then(function (res) {
                 return res.data;
             });
     };
     orderService.deleteorder = function (id) {
         return $http
-            .post('http://www.localhost.com/Angular-PhpSlim/public/addbook',id)
+            .post('/delete',id)
             .then(function (res) {
                 return res.data;
             });

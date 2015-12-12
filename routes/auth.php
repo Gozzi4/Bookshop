@@ -33,6 +33,7 @@ $app->post('/login',function()use ($app){
 
         if($user && $app->hash->passwordCheck($password, $user->password)){
 
+            $_SESSION['user_id']= $user->id;
             // success login
             echo json_encode($user);
         }else{
@@ -44,11 +45,22 @@ $app->post('/login',function()use ($app){
         echo'failed';
     }
 
-    echo $app->container->auth ;
+    // echo $app->container->auth ;
 
 });
 $app->get('/log',function()use ($app) {
-   echo  'fds';
+    // this is when the user refreshes the page
+    
+   if (isset($app->container->auth)){
+       
+       echo  json_encode($app->container->auth);
+       
+   }else {
+       
+       
+       echo  'null';
+   }
+  
 });
 $app->post('/register',function()use ($app){
     $app->response()->header("Content-Type", "application/json");

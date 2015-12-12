@@ -52,7 +52,7 @@ angular.module('bookshop').controller('profileController',['$scope','$routeParam
     function usersBooks(){
 
         var userid = $scope.currentUser.id;
-        var url = "http://www.localhost.com/Angular-PhpSlim/public/getUserBooks/"+userid;
+        var url = "/getUserBooks/"+userid;
 
         $http.get(url).then(function(response){
             //setting the output value to the text input so the user can convert back

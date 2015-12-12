@@ -8,7 +8,7 @@ $container = new Pimple();
 
 $container['config'] = array(
     'driver'    => 'mysql',
-    'host'      => 'www.localhost.com',
+    'host'      => 'localhost',
     'database'  => 'bookshop',
     'username'  => 'root',
     'password'  => 'password',
