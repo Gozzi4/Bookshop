@@ -19,7 +19,10 @@ angular.module('bookshop').controller('bookController',['$scope','$routeParams',
     });
 
     $scope.order = function (){
-       var book =  $scope.bookId;
+        
+        
+        if($scope.currentUser != null){
+             var book =  $scope.bookId;
         var userid = $scope.currentUser.id;
         arr ={
             bookId:book,
@@ -35,6 +38,12 @@ angular.module('bookshop').controller('bookController',['$scope','$routeParams',
         }, function () {
 
         });
+        }else{
+            
+            
+            window.alert("please log in");
+        }
+      
 
 
     }

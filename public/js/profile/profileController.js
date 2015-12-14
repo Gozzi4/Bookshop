@@ -17,6 +17,7 @@ angular.module('bookshop').controller('profileController',['$scope','$routeParam
     var arr;
 
     usersBooks();
+    usersOrders();
 
     $scope.add = function (bookname,description,author,image) {
 
@@ -61,7 +62,7 @@ angular.module('bookshop').controller('profileController',['$scope','$routeParam
 
         });
     }
-    function usersOrderss(){
+    function usersOrders(){
 
         
         var url = "/orders";
@@ -69,8 +70,8 @@ angular.module('bookshop').controller('profileController',['$scope','$routeParam
         $http.get(url).then(function(response){
             //setting the output value to the text input so the user can convert back
            
-           $scope.orders = response.data;
-            console.log(response.data);
+          $scope.ords = response.data.order;
+            console.log(response.data.order);
         }) .catch(function () {
 
         });

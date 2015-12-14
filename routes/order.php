@@ -20,11 +20,18 @@ $app->get('/orders', function() use ($app) {
            $order =  $app->book
             ->where('id',$mydata->bookId)
             ->get();
-            
+           
+           
+           
+           
+            $orders = array(
+                
+                
+                'order' =>$order);
           
-           echo json_encode($order);
+           
             
-        } 
+        }
         
     }else{
         
@@ -33,7 +40,7 @@ $app->get('/orders', function() use ($app) {
     }
 
         
-   
+   echo json_encode($orders);
 
 });
 
